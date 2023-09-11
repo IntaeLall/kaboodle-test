@@ -13,6 +13,7 @@ interface BaseInputProps<TFieldValues extends FieldValues = FieldValues>
       value: RegExp;
       message: string;
     };
+    validate?: Record<string, (value: string | number | Date) => string | boolean>;
   }>;
 }
 
@@ -21,6 +22,15 @@ const BaseInput = forwardRef(<TFieldValues extends FieldValues = FieldValues>(
   ref: React.ForwardedRef<HTMLInputElement>
 ) => {
   const { name, control, label, defaultValue, rules, ...inputProps } = props;
+
+
+  if (inputProps.type === 'date' && rules) {
+    rules.validate = {
+      ...rules.validate,
+      futureDate: value => new Date(value) > new Date() || "The date should be in the future."
+    }
+  }
+
 
   return (
     <div>
