@@ -18,9 +18,6 @@ export interface TicketResponse extends Omit<TicketType, '_id'>{
 }
 
 export interface EventResponse extends Omit<EventType, 'date'>{
-    id: string
+    id: string;
     date: string
-    tickets: TicketResponse[]
-    createdAt: string,
-    updatedAt: string
 }
