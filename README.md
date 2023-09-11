@@ -25,7 +25,7 @@ Technical test for Kaboodle.
 
 1. **Clone the Repository:**
    ```
-   git clone https://github.com/IntaeLall/micro-app-v2/kaboodle-test
+   git clone https://github.com/IntaeLall/kaboodle-test
 
    ```
 
