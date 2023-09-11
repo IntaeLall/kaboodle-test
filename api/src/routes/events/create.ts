@@ -12,7 +12,6 @@ const createEventRoute = (database: Database) => async(req: Request, res: Respon
             data: event
         })
     } catch(e) {
-        console.log(e)
         return res.status(500).send({
             message: "Internal Server Error"
         })
