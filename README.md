@@ -30,7 +30,8 @@ Technical test for Kaboodle.
 
 3. **Docker Compose:**
    ```
-      docker-compose up
+   docker-compose up
+   
    ```
 
 This command will start the API, Front-end UI, and a local mongodb instance.
