@@ -4,7 +4,6 @@ Technical test for Kaboodle.
 
 ## Table of Contents
 
-- [Features](#features)
 - [Directory Structure](#directory-structure)
 - [Getting Started](#getting-started)
 - [Technologies Used](#technologies-used)
