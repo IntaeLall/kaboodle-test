@@ -10,10 +10,6 @@ import createEvent from "../../../database/events/create";
 describe("Clients", () => {
     let app: Express.Application;
 
-    const createEventRequest = (data: any) => request(app).post('/events').send(data);
-    const getAllEventsRequest = () => request(app).get('/events');
-    const getEventByIdRequest = (id: string) => request(app).get(`/events/${id}`);
-
     const buildExpectedResponse = (eventData: any): EventResponse => ({
         id: expect.any(String),
         ...eventData,
@@ -27,8 +23,7 @@ describe("Clients", () => {
     });
 
     beforeAll(async () => {
-        await dbClient.connect();
-        app = initApp({
+        app = await initApp({
             database: database,
             dbClient
         });
@@ -50,7 +45,10 @@ describe("Clients", () => {
 
         describe("POST", () => {
             it("should return 201 with the new event given the correct params", async () => {
+                const createEventRequest = (data: any) => request(app).post('/events').send(data);
+
                 const eventInput = eventFactory();
+
                 const response = await createEventRequest(eventInput);
 
                 expect(response.statusCode).toBe(201);
@@ -60,16 +58,18 @@ describe("Clients", () => {
 
         describe("GET", () => {
             it("should return 200 with the list of events in descending order", async () => {
+                const getAllEventsRequest = () => request(app).get('/events');
+                
                 const [mockEvent1, mockEvent2] = [eventFactory(), eventFactory()];
 
                 await Promise.all([
-                    createEventRequest(mockEvent1),
-                    createEventRequest(mockEvent2)
+                    createEvent(mockEvent1),
+                    createEvent(mockEvent2)
                 ]);
 
                 const response = await getAllEventsRequest();
 
-                const expectedResponse = [mockEvent2, mockEvent1].map(buildExpectedResponse);
+                const expectedResponse = [mockEvent1, mockEvent2].map(buildExpectedResponse);
 
                 expect(response.statusCode).toBe(200);
                 expect(response.body.data).toHaveLength(2);
@@ -79,6 +79,8 @@ describe("Clients", () => {
 
         describe("GET /{id}", () => {
             it("should return 200 with the correct event", async () => {
+                const getEventByIdRequest = (id: string) => request(app).get(`/events/${id}`);
+
                 const mockEvent1 = eventFactory()
                 const createMockEventResponse = await createEvent(mockEvent1)
 
