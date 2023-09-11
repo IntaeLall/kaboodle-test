@@ -42,7 +42,7 @@ The api can be accessed from http://localhost:8000
 ## Technologies Used
 
 - Back-end: TypeScript, Node, Express.js
-- Front-end: TypeScript, React,Tailwind, Vite
+- Front-end: TypeScript, React, Tailwind, Vite
 
 ## What I would have done if I had more time
 
