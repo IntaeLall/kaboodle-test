@@ -1,4 +1,4 @@
-# Technical test for Kaboodle.
+# Technical test for Kaboodle
 
 ## Table of Contents
 
