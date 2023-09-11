@@ -1,5 +1,5 @@
 import EventModel from "../../models/Event";
-import transformEvent, { MongooseEvent } from "../transformers/transformEvent";
+import transformEvent from "../transformers/transformEvent";
 
 const getAllEvents = async () => {
     try {

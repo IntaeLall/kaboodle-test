@@ -1,6 +1,5 @@
 import { Database } from "../../../../database"
 import createEvent from "../../../../handlers/events/create"
-import { EventType } from "../../../../types/models"
 import { EventResponse } from "../../../../types/responses"
 import { eventFactory, mockCreateEventOutput } from "../../../mocks"
 
